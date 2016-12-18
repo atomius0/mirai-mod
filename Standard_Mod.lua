@@ -7,7 +7,8 @@
 --------------------------------------------------
 -- Libraries
 --------------------------------------------------
--- require "./AI/USER_AI/extra.lua" -- example
+-- OLD: require "./AI/USER_AI/extra.lua" -- example
+-- require "AI.USER_AI.extra" -- example
 
 --------------------------------------------------
 -- Extra Globals

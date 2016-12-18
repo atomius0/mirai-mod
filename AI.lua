@@ -3,12 +3,12 @@
 --------------------------------------------------
 MIRAI_VER = 122
 
-dofile("./AI/USER_AI/Const.lua")
-dofile("./AI/USER_AI/Util.lua")
-dofile("./AI/USER_AI/Config.lua") -- configuration file
-dofile("./AI/USER_AI/PassiveDB.lua")
-dofile("./AI/USER_AI/Patrol.lua")
-dofile("./AI/USER_AI/SelectedMod.lua") -- 3rd party changes
+require "AI.USER_AI.Const"
+require "AI.USER_AI.Util"
+require "AI.USER_AI.Config" -- configuration file
+require "AI.USER_AI.PassiveDB"
+require "AI.USER_AI.Patrol"
+require "AI.USER_AI.SelectedMod" -- 3rd party changes
 
 --------------------------------------------------
 -- State
