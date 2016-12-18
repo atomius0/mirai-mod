@@ -1,14 +1,14 @@
 --------------------------------------------------
--- Mir AI v1.2.2
+-- Mir AI v1.2.2 mod
 --------------------------------------------------
 MIRAI_VER = 122
 
-require "./AI/USER_AI/Const.lua"
-require "./AI/USER_AI/Util.lua"
-require "./AI/USER_AI/Config.lua" -- configuration file
-require "./AI/USER_AI/PassiveDB.lua"
-require "./AI/USER_AI/Patrol.lua"
-require "./AI/USER_AI/SelectedMod.lua" -- 3rd party changes
+dofile("./AI_sakray/USER_AI/Const.lua")
+dofile("./AI_sakray/USER_AI/Util.lua")
+dofile("./AI_sakray/USER_AI/Config.lua") -- configuration file
+dofile("./AI_sakray/USER_AI/PassiveDB.lua")
+dofile("./AI_sakray/USER_AI/Patrol.lua")
+dofile("./AI_sakray/USER_AI/SelectedMod.lua") -- 3rd party changes
 
 --------------------------------------------------
 -- State
@@ -1155,7 +1155,7 @@ function GetMyNextTarget(HomunHPPerc)
 		end
 	end
 	if object == 0 then
-		for i,v in Friends do
+		for i,v in pairs(Friends) do
 			object = GetEnemyOf(v)
 			if GetV(V_MOTION, object) == MOTION_DEAD then
 				object = 0
@@ -1192,7 +1192,7 @@ function GetMyNextTarget(HomunHPPerc)
 	end
 	if CooTarget == 0 then -- Owner is not attacking. Maybe a friend?
 		local FriendMotion = 0
-		for i,v in Friends do
+		for i,v in pairs(Friends) do
 			object = GetV(V_TARGET, v)
 			FriendMotion = GetV(V_MOTION, v)
 			if (object ~= 0) and (FriendMotion == MOTION_ATTACK or FriendMotion == MOTION_ATTACK2) then

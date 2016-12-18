@@ -146,7 +146,14 @@ NoAggroMobList = {
 1514, --Zhu Po Long
 1417} --Zipper Bear
 
+--[[
 NoAggroMob = {}
 for i,v in NoAggroMobList do
+	NoAggroMob[v] = 1
+end
+]]
+
+NoAggroMob = {}
+for i,v in pairs(NoAggroMobList) do
 	NoAggroMob[v] = 1
 end

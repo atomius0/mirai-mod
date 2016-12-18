@@ -1,7 +1,7 @@
 --------------------------------------------------
 -- Util.lua for Mir AI
 --------------------------------------------------
-require "./AI/USER_AI/Const.lua"
+dofile("./AI_sakray/USER_AI/Const.lua")
 
 --------------------------------------------------
 function IsMonster2(ID)
@@ -69,7 +69,7 @@ FRIENDLIST_FILE = "AI/USER_AI/Friends.txt"
 --------------------------------------------------
 function FriendList_Clear()
 --------------------------------------------------
-	for i,v in Friends do
+	for i,v in pairs(Friends) do
 		Friends[i] = nil
 	end
 end
@@ -97,7 +97,7 @@ function FriendList_Save()
 --------------------------------------------------
 	local f_out = io.open(FRIENDLIST_FILE, "w")
 	if f_out ~= nil then
-		for i,v in Friends do
+		for i,v in pairs(Friends) do
 			f_out:write(v .. "\n")
 			-- TraceAI(string.format("Friend %d saved", v))
 		end
