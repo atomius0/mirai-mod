@@ -6,7 +6,7 @@ based on [Mir AI v1.2.2](http://www.mirandablade.altervista.org/?pg=mirai&lng=en
 
 A fork of Mir AI, modified to work with newer versions of the Ragnarok Online client.
 
-It also includes preliminary support for Homunculus S (based on [a MirAI modification by Spheres from the rathena.org forums](https://rathena.org/board/topic/96390-mirai-v122-homunculus-ai-rathena16797/)
+It also includes preliminary support for Homunculus S. (based on [a MirAI modification by Spheres from the rathena.org forums](https://rathena.org/board/topic/96390-mirai-v122-homunculus-ai-rathena16797/))
 
 
 * see also: [the original Mir AI v1.2 readme](readme_old.txt)
