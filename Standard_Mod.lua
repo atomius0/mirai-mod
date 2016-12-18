@@ -15,6 +15,9 @@
 -- MyExtraGlobal1 = 0 -- example
 -- MyExtraGlobal2 = 0 -- example
 
+-- Homu S global, TODO: move to Config.lua later.
+OldHomunType = VANILMIRTH	-- LIF || FILIR || AMISTR || VANILMIRTH
+
 --------------------------------------------------
 function ModInit()
 -- plugin initialization

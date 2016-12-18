@@ -1,7 +1,7 @@
 --------------------------------------------------
 -- Util.lua for Mir AI
 --------------------------------------------------
-dofile("./AI_sakray/USER_AI/Const.lua")
+dofile("./AI/USER_AI/Const.lua")
 
 --------------------------------------------------
 function IsMonster2(ID)

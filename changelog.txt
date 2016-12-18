@@ -1,0 +1,6 @@
+Mir AI v1.2.2 mod v2.0:
+	- added preliminary support for Homunculus S.
+	  (based on modified MirAI made by Spheres from rathena.org forums:
+	  http://rathena.org/board/topic/96390-mirai-v122-homunculus-ai-rathena16797/ )
+	
+	- changed AI path back to ./AI/USER_AI/

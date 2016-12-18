@@ -1,14 +1,14 @@
 --------------------------------------------------
--- Mir AI v1.2.2 mod
+-- Mir AI v1.2.2 mod v2.0
 --------------------------------------------------
 MIRAI_VER = 122
 
-dofile("./AI_sakray/USER_AI/Const.lua")
-dofile("./AI_sakray/USER_AI/Util.lua")
-dofile("./AI_sakray/USER_AI/Config.lua") -- configuration file
-dofile("./AI_sakray/USER_AI/PassiveDB.lua")
-dofile("./AI_sakray/USER_AI/Patrol.lua")
-dofile("./AI_sakray/USER_AI/SelectedMod.lua") -- 3rd party changes
+dofile("./AI/USER_AI/Const.lua")
+dofile("./AI/USER_AI/Util.lua")
+dofile("./AI/USER_AI/Config.lua") -- configuration file
+dofile("./AI/USER_AI/PassiveDB.lua")
+dofile("./AI/USER_AI/Patrol.lua")
+dofile("./AI/USER_AI/SelectedMod.lua") -- 3rd party changes
 
 --------------------------------------------------
 -- State
@@ -59,7 +59,8 @@ MySkillLevel = 0
 Initialized = false
 OwnerID     = 0
 HomunType   = 0
-LRASID      = 0
+HomunS      = false -- added for Homunculus S support
+LRASID      = 0     -- Long Range Attack Skill ID
 StartupTime = 0
 isCircling  = false
 
@@ -879,13 +880,16 @@ function OnEVADE_ST()
 	local HomunSP = GetV(V_SP, MyID)
 
 	if(HomunType == AMISTR	or HomunType == AMISTR_H
-	or HomunType == AMISTR2 or HomunType == AMISTR_H2) then
+	or HomunType == AMISTR2 or HomunType == AMISTR_H2
+	or (HomunS == true and OldHomunType == AMISTR)) then
 		DoSkill(AS_AMI_BULW, MyID) -- Amistr: Bulwark
 	elseif(HomunType == LIF  or HomunType == LIF_H
-	or 	 HomunType == LIF2 or HomunType == LIF_H2) then
+	or 	 HomunType == LIF2 or HomunType == LIF_H2
+	or (HomunS == true and OldHomunType == LIF)) then
 		DoSkill(AS_LIF_ESCP, MyID) -- Lif: Urgent Escape
 	elseif(HomunType == VANILMIRTH  or HomunType == VANILMIRTH_H
-	or 	 HomunType == VANILMIRTH2 or HomunType == VANILMIRTH_H2) then
+	or 	 HomunType == VANILMIRTH2 or HomunType == VANILMIRTH_H2
+	or (HomunS == true and OldHomunType == VANILMIRTH)) then
 		DoSkill(AS_VAN_CAPR, MyEnemy) -- Vani: Caprice (long range)
 		-- if GetV(V_HP, OwnerID) <= AAA_MinHP then
 		-- 	DoSkill(AS_VAN_BLES, OwnerID) -- [...] it seems disabled for AIs
@@ -1390,14 +1394,16 @@ function DoCombat()
 
 			-- Amistr ----------------------------------
 			if(HomunType == AMISTR	or HomunType == AMISTR_H
-			or HomunType == AMISTR2 or HomunType == AMISTR_H2) then
+			or HomunType == AMISTR2 or HomunType == AMISTR_H2
+			or (HomunS == true and OldHomunType == AMISTR)) then
 			--------------------------------------------
 
 				DoSkill(AS_AMI_BULW, MyID)
 
 			-- Lif -------------------------------------
 			elseif(HomunType == LIF  or HomunType == LIF_H
-			or     HomunType == LIF2 or HomunType == LIF_H2) then
+			or     HomunType == LIF2 or HomunType == LIF_H2
+			or (HomunS == true and OldHomunType == LIF)) then
 			--------------------------------------------
 
 				-- Heal the Owner, when him/her HPs are low (<= AAP.HP_Perc)
@@ -1409,7 +1415,8 @@ function DoCombat()
 
 			-- Filir -----------------------------------
 			elseif (HomunType == FILIR  or HomunType == FILIR_H
-			or      HomunType == FILIR2 or HomunType == FILIR_H2) then
+			or      HomunType == FILIR2 or HomunType == FILIR_H2
+			or (HomunS == true and OldHomunType == FILIR)) then
 			--------------------------------------------
 
 				DoSkill(AS_FIL_FLTT, MyID)
@@ -1423,7 +1430,8 @@ function DoCombat()
 
 			-- Vanilmirth ------------------------------
 			elseif(HomunType == VANILMIRTH  or HomunType == VANILMIRTH_H
-			or     HomunType == VANILMIRTH2 or HomunType == VANILMIRTH_H2) then
+			or     HomunType == VANILMIRTH2 or HomunType == VANILMIRTH_H2
+			or (HomunS == true and OldHomunType == VANILMIRTH)) then
 			--------------------------------------------
 
 				-- if ((GetV(V_HP, OwnerID) / GetV(V_MAXHP, OwnerID)) * 100 <= AAP.HP_Perc) then
@@ -2030,7 +2038,7 @@ function limMove(ID, x, y) -- Movement protection filter
 		MyEnemy = 0
 		MySkill = 0
 		IdleStartTime = GetTick()
-                MoveToOwner(MyID)
+		MoveToOwner(MyID)
 	end
 end
 
@@ -2047,13 +2055,22 @@ function AI(myid)
 		Log("===INIT START===")
 		OwnerID = GetV(V_OWNER, MyID)
 		HomunType = GetV(V_HOMUNTYPE, MyID)
+		
+		-- Homunculus S detection
+		if (HomunType > 16) then
+			HomunS = true
+			Log("Homunculus S detected")
+		end
+		
 		-- Vanilmirth ------------------------------
 		if(HomunType == VANILMIRTH  or HomunType == VANILMIRTH_H
-		or HomunType == VANILMIRTH2 or HomunType == VANILMIRTH_H2) then
+		or HomunType == VANILMIRTH2 or HomunType == VANILMIRTH_H2
+		or (HomunS == true and OldHomunType == VANILMIRTH)) then
 			LRASID = AS_VAN_CAPR
 		-- Filir -----------------------------------
 		elseif (HomunType == FILIR  or HomunType == FILIR_H
-		or 	  HomunType == FILIR2 or HomunType == FILIR_H2) then
+		or 	  HomunType == FILIR2 or HomunType == FILIR_H2
+		or (HomunS == true and OldHomunType == FILIR)) then
 			LRASID = AS_FIL_MOON
 		--------------------------------------------
 		end
