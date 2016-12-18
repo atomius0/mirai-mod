@@ -1,7 +1,9 @@
 --------------------------------------------------
--- Mir AI v1.2.2 mod v2.1
+-- Mir AI Mod v2.1 by atomius
+-- based on Mir AI v1.2.2 by Miranda Blade
 --------------------------------------------------
 MIRAI_VER = 122
+MIRAI_MOD_VER = 210
 
 require "AI.USER_AI.Const"
 require "AI.USER_AI.Util"
