@@ -1,5 +1,5 @@
 # use with: mingw32-make -f Makefile.mingw
-VERSION = 2.1
+VERSION = 2.1.1
 
 LUA_FILES     = AI.lua Config.lua Const.lua PassiveDB.lua Patrol.lua \
 SelectedMod.lua Standard_Mod.lua Util.lua
