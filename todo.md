@@ -1,7 +1,7 @@
 
 ## Todo
 
-- [ ] update [changelog.txt](changelog.txt)
+- [x] update [changelog.txt](changelog.txt)
 - [ ] write a new Config GUI (probably in wxLua)
 - [ ] add proper support for Homunculus S skills (need more information)
 

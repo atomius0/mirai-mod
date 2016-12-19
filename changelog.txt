@@ -1,3 +1,14 @@
+Changelog:
+
+Mir AI Mod v2.1:
+	- changed imports from "dofile()" back to "require".
+	  they now use the Lua module identifiers instead of the relative paths.
+	
+	- shortened the project name from "Mir AI v1.2.2 mod v2.0" to "Mir AI Mod v2.1"
+	
+	- project is now hosted on GitHub: https://github.com/atomius0/mirai-mod
+
+
 Mir AI v1.2.2 mod v2.0:
 	- added preliminary support for Homunculus S.
 	  (based on modified MirAI made by Spheres from rathena.org forums:
