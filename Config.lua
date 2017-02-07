@@ -15,6 +15,7 @@ SKILL_TIME_OUT        = 2000  -- The AI doesn't use aggressive skills if more th
                               -- from the begin of the attack (unless the skill mode for this monster is "WITH_full_power")
 NO_MOVING_TARGETS     = false -- true = the homunculus don't attack monsters that are on movement (ie monsters that are following other players)
 ADV_MOTION_CHECK      = false -- true = it tries to detect frozen or trapped monster (for now this works for aggressive monsters only) and area spells
+OLD_HOMUN_TYPE        = VANILMIRTH -- LIF | FILIR | AMISTR | VANILMIRTH
 
 -- Alchemist Auto Attacks (AAA)-------------------
 -- HP Range (no AAA when HP are out of this range)

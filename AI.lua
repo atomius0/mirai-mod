@@ -883,15 +883,15 @@ function OnEVADE_ST()
 
 	if(HomunType == AMISTR	or HomunType == AMISTR_H
 	or HomunType == AMISTR2 or HomunType == AMISTR_H2
-	or (HomunS == true and OldHomunType == AMISTR)) then
+	or (HomunS == true and OLD_HOMUN_TYPE == AMISTR)) then
 		DoSkill(AS_AMI_BULW, MyID) -- Amistr: Bulwark
 	elseif(HomunType == LIF  or HomunType == LIF_H
 	or 	 HomunType == LIF2 or HomunType == LIF_H2
-	or (HomunS == true and OldHomunType == LIF)) then
+	or (HomunS == true and OLD_HOMUN_TYPE == LIF)) then
 		DoSkill(AS_LIF_ESCP, MyID) -- Lif: Urgent Escape
 	elseif(HomunType == VANILMIRTH  or HomunType == VANILMIRTH_H
 	or 	 HomunType == VANILMIRTH2 or HomunType == VANILMIRTH_H2
-	or (HomunS == true and OldHomunType == VANILMIRTH)) then
+	or (HomunS == true and OLD_HOMUN_TYPE == VANILMIRTH)) then
 		DoSkill(AS_VAN_CAPR, MyEnemy) -- Vani: Caprice (long range)
 		-- if GetV(V_HP, OwnerID) <= AAA_MinHP then
 		-- 	DoSkill(AS_VAN_BLES, OwnerID) -- [...] it seems disabled for AIs
@@ -1397,7 +1397,7 @@ function DoCombat()
 			-- Amistr ----------------------------------
 			if(HomunType == AMISTR	or HomunType == AMISTR_H
 			or HomunType == AMISTR2 or HomunType == AMISTR_H2
-			or (HomunS == true and OldHomunType == AMISTR)) then
+			or (HomunS == true and OLD_HOMUN_TYPE == AMISTR)) then
 			--------------------------------------------
 
 				DoSkill(AS_AMI_BULW, MyID)
@@ -1405,7 +1405,7 @@ function DoCombat()
 			-- Lif -------------------------------------
 			elseif(HomunType == LIF  or HomunType == LIF_H
 			or     HomunType == LIF2 or HomunType == LIF_H2
-			or (HomunS == true and OldHomunType == LIF)) then
+			or (HomunS == true and OLD_HOMUN_TYPE == LIF)) then
 			--------------------------------------------
 
 				-- Heal the Owner, when him/her HPs are low (<= AAP.HP_Perc)
@@ -1418,7 +1418,7 @@ function DoCombat()
 			-- Filir -----------------------------------
 			elseif (HomunType == FILIR  or HomunType == FILIR_H
 			or      HomunType == FILIR2 or HomunType == FILIR_H2
-			or (HomunS == true and OldHomunType == FILIR)) then
+			or (HomunS == true and OLD_HOMUN_TYPE == FILIR)) then
 			--------------------------------------------
 
 				DoSkill(AS_FIL_FLTT, MyID)
@@ -1433,7 +1433,7 @@ function DoCombat()
 			-- Vanilmirth ------------------------------
 			elseif(HomunType == VANILMIRTH  or HomunType == VANILMIRTH_H
 			or     HomunType == VANILMIRTH2 or HomunType == VANILMIRTH_H2
-			or (HomunS == true and OldHomunType == VANILMIRTH)) then
+			or (HomunS == true and OLD_HOMUN_TYPE == VANILMIRTH)) then
 			--------------------------------------------
 
 				-- if ((GetV(V_HP, OwnerID) / GetV(V_MAXHP, OwnerID)) * 100 <= AAP.HP_Perc) then
@@ -2067,12 +2067,12 @@ function AI(myid)
 		-- Vanilmirth ------------------------------
 		if(HomunType == VANILMIRTH  or HomunType == VANILMIRTH_H
 		or HomunType == VANILMIRTH2 or HomunType == VANILMIRTH_H2
-		or (HomunS == true and OldHomunType == VANILMIRTH)) then
+		or (HomunS == true and OLD_HOMUN_TYPE == VANILMIRTH)) then
 			LRASID = AS_VAN_CAPR
 		-- Filir -----------------------------------
 		elseif (HomunType == FILIR  or HomunType == FILIR_H
 		or 	  HomunType == FILIR2 or HomunType == FILIR_H2
-		or (HomunS == true and OldHomunType == FILIR)) then
+		or (HomunS == true and OLD_HOMUN_TYPE == FILIR)) then
 			LRASID = AS_FIL_MOON
 		--------------------------------------------
 		end
