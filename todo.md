@@ -1,10 +1,12 @@
 
 ## Todo
 
-- [x] update [changelog.txt](changelog.txt)
-- [ ] write a new Config GUI (probably in wxLua)
 - [ ] move the global variable "OldHomunType" out of Standard_Mod.lua and into Config.lua (after writing the new config GUI, to keep compatibility with the old Config.exe for now)
 - [ ] add proper support for Homunculus S skills (need more information)
+
+- [x] change SelectedMod.lua to use 'require' instead of 'dofile'
+- [x] update [changelog.txt](changelog.txt)
+- [x] write a new Config GUI (probably in wxLua)
 
 ## Notes
 
