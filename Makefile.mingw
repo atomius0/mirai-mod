@@ -1,23 +1,37 @@
 # use with: mingw32-make -f Makefile.mingw
+
+CONFIG_GUI_PATH = ../../../wxLua/projects/mirai-mod-config
+
+
 VERSION = 2.1.1
 
-LUA_FILES     = AI.lua Config.lua Const.lua PassiveDB.lua Patrol.lua \
-SelectedMod.lua Standard_Mod.lua Util.lua
-OTHER_FILES   = changelog.txt license.txt old_whatsnew.txt readme.md readme_old.txt
-ARCHIVE_FILES = $(LUA_FILES) $(OTHER_FILES)
+RELEASE_DIR = release
+
+LUA_FILES        = AI.lua Config.lua Const.lua PassiveDB.lua Patrol.lua \
+                   SelectedMod.lua Standard_Mod.lua Util.lua
+OTHER_FILES      = changelog.txt license.txt old_whatsnew.txt readme.md readme_old.txt
+CONFIG_GUI_FILES = $(CONFIG_GUI_PATH)/build/config.exe $(CONFIG_GUI_PATH)/build/config
+ARCHIVE_FILES    = $(LUA_FILES) $(OTHER_FILES) $(CONFIG_GUI_FILES)
 ARCHIVE_BASENAME = mirai-mod_v$(VERSION)
 
+
+
 .PHONY: release
-release: release/$(ARCHIVE_BASENAME).7z release/$(ARCHIVE_BASENAME).zip
+
+release: $(RELEASE_DIR)/$(ARCHIVE_BASENAME).7z $(RELEASE_DIR)/$(ARCHIVE_BASENAME).zip
 
 
-release/$(ARCHIVE_BASENAME).7z: $(ARCHIVE_FILES)
-	if not exist release mkdir release
+$(CONFIG_GUI_FILES): $(CONFIG_GUI_PATH)
+	cd $(CONFIG_GUI_PATH) && $(MAKE) -f Makefile.mingw clean && $(MAKE) -f Makefile.mingw build
+
+
+$(RELEASE_DIR)/$(ARCHIVE_BASENAME).7z: $(ARCHIVE_FILES)
+	if not exist $(RELEASE_DIR) mkdir $(RELEASE_DIR)
 	7z a -mx9 -myx9 -- $@ $(ARCHIVE_FILES)
 
 
-release/$(ARCHIVE_BASENAME).zip: $(ARCHIVE_FILES)
-	if not exist release mkdir release
+$(RELEASE_DIR)/$(ARCHIVE_BASENAME).zip: $(ARCHIVE_FILES)
+	if not exist $(RELEASE_DIR) mkdir $(RELEASE_DIR)
 	7z a -mx9 -- $@ $(ARCHIVE_FILES)
 
 
