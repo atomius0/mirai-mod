@@ -1,5 +1,14 @@
 Changelog:
 
+Mir AI Mod v2.2.0:
+	- changed SelectedMod.lua to use "require" instead of "dofile".
+	
+	- renamed variable "OldHomunType" to "OLD_HOMUN_TYPE" and moved it from "Standard_Mod.lua"
+	  into "Config.lua".
+	
+	- added new configuration program "mirai-mod-config".
+
+
 Mir AI Mod v2.1:
 	- changed imports from "dofile()" back to "require".
 	  they now use the Lua module identifiers instead of the relative paths.

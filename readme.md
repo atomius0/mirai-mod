@@ -1,4 +1,4 @@
-## Mir AI Mod v2.1 by atomius
+## Mir AI Mod v2.2.0 by atomius
 
 based on [Mir AI v1.2.2](http://www.mirandablade.altervista.org/?pg=mirai&lng=en) by [Miranda Blade](http://www.mirandablade.altervista.org/)
 
@@ -10,3 +10,9 @@ It also includes preliminary support for Homunculus S. (based on [a MirAI modifi
 
 
 * see also: [the original Mir AI v1.2 readme](readme_old.txt)
+
+
+### Project Sites:
+- https://github.com/atomius0/mirai-mod
+
+- https://github.com/atomius0/mirai-mod-config
