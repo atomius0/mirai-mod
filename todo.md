@@ -1,8 +1,9 @@
 
 ## Todo
 
-- [x] include mirai-mod-config in release archives (update makefile)
 - [ ] update version number
+- [ ] remove unsupported features: AAA, ACR, AST, AAP (also remove AAA parameter in tact list writer and all other unsupported features in mirai-mod-config's save functions)
+- [x] include mirai-mod-config in release archives (update makefile)
 - [x] move the global variable "OldHomunType" out of Standard_Mod.lua and into Config.lua (after writing the new config GUI, to keep compatibility with the old Config.exe for now)
 - [ ] add proper support for Homunculus S skills (need more information)
 
